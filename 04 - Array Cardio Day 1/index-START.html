@@ -38,16 +38,33 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
 
+    const fifttens = inventors.filter(e => e.year <= 1600 && e.year >= 1500);
+    
+    console.table(fifttens);
+
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+
+    const name = inventors.map(e => console.log(e.first + " - " + e.last));
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
 
+        const sorts = inventors.sort((a,b) => a.year>b.year  ? 1 : -1);
+
+        console.table(sorts);
+
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
 
+      const totalyear = inventors.reduce((acc,inventor)=> {
+
+        return acc + (inventor.passed - inventor.year);
+      } ,0)
+
     // 5. Sort the inventors by years lived
+
+    const siy = inventors.sort((a,b) => (a.passed - a.year)> (b.passed - b.year) ? 1 : -1 )
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -55,6 +72,13 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+    const sortLastName = inventors.sort((lastName,nextName)=> {
+      const [aLast , aFirst] = lastName.split(", ");
+      const [bLast , bFirst] = nextName.split(", ");
+
+      return aLast> bLast ? 1: -1;
+    } )
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
